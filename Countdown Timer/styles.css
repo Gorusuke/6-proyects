@@ -20,9 +20,11 @@ body {
 }
 
 h1{
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: 400;
   margin: 5rem auto 3rem auto;
+  line-height: 1;
+  text-align: center;
 }
 
 .countdowm-container{
@@ -36,11 +38,23 @@ h1{
 }
 
 p{
-  font-size: 6rem;
+  font-size: 5rem;
   line-height: 1;
   margin: 2rem;
 }
 
 span {
-  font-size: 1.3rem;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #09f;
+}
+
+@media (min-width: 425px) {
+  h1{
+    font-size: 4rem;
+  }
+
+  p{
+    font-size: 6rem;
+  }
 }
