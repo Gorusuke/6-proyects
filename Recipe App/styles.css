@@ -14,4 +14,136 @@ body {
   align-items: center;
   height: 100vh;
   font-family: 'Poppins', sans-serif;
+  background: #ADA996;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.mobile-container{
+  width: 400px;
+  background-color: #fff;
+  box-shadow: 0 0 10px 2px #33333381;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+header{
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+header input{
+  padding: .5rem 1rem;
+  border: 1px solid #000;
+  border-right: none;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  background-color: #eee;
+  width: 100%;
+  outline: none;
+  font-family: inherit;
+}
+
+header button{
+  background-color: transparent;
+  color: #09f;
+  font-size: 1.2rem;
+  border: 1px solid #110606;
+  padding: 4px 12px 3px 12px;
+  border-left: none;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+img{
+  width: 100%;
+}
+
+.fav-container{
+  padding: .5rem;
+  text-align: center;
+  background-color: rgb(130, 205, 255);
+}
+
+.fav-container h3{
+  margin-bottom: .7rem;
+  font-weight: 600;
+}
+
+.fav-meals{
+  justify-content: space-between;
+  display: flex;
+  list-style: none;
+}
+
+.fav-meals li {
+  width: 85px;
+}
+
+.fav-meals li img {
+  border: 2px solid #fff;
+  border-radius: 50%;
+  object-fit: cover;
+  width: 60px;
+  height: 60px;
+  box-shadow: 0 0 10px 2px #33333381;
+}
+
+.fav-meals li span{
+  display: block;
+  font-size: .85rem;
+}
+
+.meal{
+  border-radius: 5px;
+  box-shadow: 0 0 10px 2px #33333381;
+  margin: 1rem;
+  overflow: hidden;
+}
+
+.meal-header{
+  position: relative;
+}
+
+.meal-header .random{
+  font-size: 1rem;
+  position: absolute;
+  top: 1rem;
+  background-color: #fff;
+  font-weight: 400;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: .3rem 1rem;
+}
+
+.meal-header img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+
+.meal-body{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+}
+
+.meal-body .fav-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.3rem;
+  color: #cacaca;
+}
+
+.meal-body .fav-btn.active{
+  color: rebeccapurple;
 }
