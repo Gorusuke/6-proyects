@@ -78,13 +78,14 @@ img{
 }
 
 .fav-meals{
-  justify-content: space-between;
+  /* justify-content: space-between; */
   display: flex;
   list-style: none;
 }
 
 .fav-meals li {
   width: 85px;
+
 }
 
 .fav-meals li img {
