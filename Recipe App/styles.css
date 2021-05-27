@@ -17,7 +17,6 @@ body {
   background: #ADA996;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to top, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to top, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
 }
 
 .mobile-container{
@@ -25,7 +24,7 @@ body {
   background-color: #fff;
   box-shadow: 0 0 10px 2px #33333381;
   border-radius: 5px;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 header{
@@ -67,7 +66,7 @@ img{
 }
 
 .fav-container{
-  padding: .5rem;
+  padding: 1rem .5rem;
   text-align: center;
   background-color: rgb(130, 205, 255);
 }
@@ -78,14 +77,16 @@ img{
 }
 
 .fav-meals{
-  /* justify-content: space-between; */
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 21%);
+  gap: 1rem;
   list-style: none;
 }
 
 .fav-meals li {
   width: 85px;
-
+  position: relative;
+  cursor: pointer;
 }
 
 .fav-meals li img {
@@ -99,7 +100,23 @@ img{
 
 .fav-meals li span{
   display: block;
-  font-size: .85rem;
+  font-size: .75rem;
+  font-weight: 600;
+}
+
+.fav-meals li .close {
+  border: none;
+  background-color: transparent;
+  font-size: 1.1rem;
+  position: absolute;
+  top: -10px;
+  left: 5px;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.fav-meals li:hover .close {
+  opacity: 1;
 }
 
 .meal{
@@ -107,6 +124,7 @@ img{
   box-shadow: 0 0 10px 2px #33333381;
   margin: 1rem;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .meal-header{
@@ -147,4 +165,71 @@ img{
 
 .meal-body .fav-btn.active{
   color: rebeccapurple;
+}
+
+.meal-info-container{
+  position: fixed;
+  background-color: #00000080;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;  
+}
+
+.meal-info-header {
+  background-color: #fff;
+  padding: 2rem;
+  max-width: 500px;
+  max-height: 800px;
+  position: relative;
+  text-align: center;
+  overflow-y: scroll;
+}
+
+.meal-info-header .close-modal{
+  position: absolute;
+  border: none;
+  background-color: transparent;
+  font-size: 1.5rem;
+  top: 15px;
+  right: 20px;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+}
+
+.meal-info-header .close-modal:hover{
+  color: #09f;
+}
+
+.meal-info-header h1{
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.meal-info-header img {
+  margin-bottom: 1rem;
+}
+
+.meal-info-body p{
+  margin-bottom: 1.5rem;
+}
+
+.meal-info-body h5{
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.meal-info-body ul{
+  display: grid;
+  grid-template-columns: repeat(2, 48%);
+  gap: 1rem;
+}
+
+.meal-info-body ul li{
+  list-style: none;
+  font-weight: 600;
 }
