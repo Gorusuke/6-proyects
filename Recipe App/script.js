@@ -8,14 +8,12 @@ const mealPopup = document.getElementById("meal-popup");
 
 getRamdonMeal();
 fetchFavMeals();
-// getMealById(52901);
 
 async function getRamdonMeal() {
   const url = "https://www.themealdb.com/api/json/v1/1/random.php";
   const result = await fetch(url);
   const response = await result.json();
   const randomMeal = response.meals[0];
-  // console.info(randomMeal);
 
   addMeal(randomMeal, true);
 }
@@ -41,7 +39,7 @@ function addMeal(mealData, random = false) {
   meal.classList.add("meal");
   meal.innerHTML = `
     <div class="meal-header">
-      ${random ? `<span class="random">random recipe</span>` : ""} 
+      ${random ? `<span class="random">random recipe</span>` : ""}
       <img src='${mealData.strMealThumb}' alt="${mealData.strMeal}" />
     </div>
     <div class="meal-body">
@@ -72,23 +70,28 @@ function addMeal(mealData, random = false) {
 }
 
 function addMealPopup(params) {
-  // console.info(params);
   // Clean the meal info
   mealPopup.innerHTML = "";
+
   const mealInfo = document.createElement("div");
+  let ingredients = [];
+  for (let i = 1; i < 20; i++) {
+    if (params["strIngredient" + i]) {
+      ingredients.push(
+        `${params["strIngredient" + i]} - ${params["strMeasure" + i]}`
+      );
+    } else {
+      break;
+    }
+  }
   mealInfo.innerHTML = `
     <h1>${params.strMeal}</h1>
     <img src="${params.strMealThumb}" alt="${params.strMeal}">
     <p>${params.strInstructions}</p>
-    <h5>Ingredients</h5>
+    <h5>Ingredients:</h5>
     <ul>
-      <li>1. ${params.strIngredient1 && params.strIngredient1}</li>
-      <li>2. ${params.strIngredient2 && params.strIngredient2}</li>
-      <li>3. ${params.strIngredient3 && params.strIngredient3}</li>
-      <li>4. ${params.strIngredient4 && params.strIngredient4}</li>
-      <li>5. ${params.strIngredient5 && params.strIngredient5}</li>
-      <li>6. ${params.strIngredient6 && params.strIngredient6}</li>
-      </ul>
+      ${ingredients.map((ing) => `<li>${ing}</li>`).join("")}
+    </ul>
   `;
   mealPopup.appendChild(mealInfo);
 }
@@ -130,13 +133,19 @@ function addMealToFav(mealData) {
   const meal = document.createElement("li");
   // meal.classList.add("fav-meal");
   meal.innerHTML += `
-    <img src="${mealData.strMealThumb}" alt="${mealName}">
+    <img class="image-fav" src="${mealData.strMealThumb}" alt="${mealName}">
     <span>${mealName}</span>
     <button class="close"><i class="far fa-times-circle"></i></button>
   `;
 
-  // const btnMealHeader = meal.querySelector(".meal-header");
-  meal.addEventListener("click", () => {
+  const btnImageFav = meal.querySelector(".image-fav");
+  const btnSpan = meal.querySelector("span");
+  btnImageFav.addEventListener("click", () => {
+    modalContainer.style.display = "flex";
+    addMealPopup(mealData);
+  });
+
+  btnSpan.addEventListener("click", () => {
     modalContainer.style.display = "flex";
     addMealPopup(mealData);
   });
@@ -144,6 +153,8 @@ function addMealToFav(mealData) {
   const btn = meal.querySelector(".close");
   btn.addEventListener("click", () => {
     removeFromLocalStorage(mealData.idMeal);
+
+    // btn.classList.remove("active");
     fetchFavMeals();
   });
 

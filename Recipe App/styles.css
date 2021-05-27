@@ -20,11 +20,12 @@ body {
 }
 
 .mobile-container{
-  width: 400px;
+  max-width: 400px;
   background-color: #fff;
   box-shadow: 0 0 10px 2px #33333381;
   border-radius: 5px;
   overflow-x: hidden;
+  max-height: 700px;
 }
 
 header{
@@ -224,12 +225,10 @@ img{
 }
 
 .meal-info-body ul{
-  display: grid;
-  grid-template-columns: repeat(2, 48%);
-  gap: 1rem;
+  text-align: left;
+  margin-left: 2rem;
 }
 
 .meal-info-body ul li{
-  list-style: none;
   font-weight: 600;
 }
