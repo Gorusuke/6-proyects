@@ -1,0 +1,10 @@
+{
+  "markdown.preview.fontFamily": "'Cascadia Code', monospace",
+  "errorLens.fontFamily": "'Cascadia Code', monospace",
+  "terminal.integrated.fontFamily": "'Cascadia Code', monospace",
+  "editor.codeLensFontFamily": "'Cascadia Code', monospace",
+  "editor.fontWeight": "normal",
+  "editor.fontFamily": "'Cascadia Code', monospace",
+  "editor.inlineHints.fontFamily": "'Cascadia Code', monospace",
+  "editor.fontLigatures": true,
+}

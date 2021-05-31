@@ -1,55 +1,72 @@
-const notesContaioner = document.getElementById("notes");
-const save = document.getElementById("save");
-const deleteNote = document.getElementById("delete");
-const textarea = document.getElementById("text");
+const addNote = document.getElementById('add')
+const notesContainer = document.getElementById('notes-container')
+addNote.disabled = false
 
-const saveContent = "Save";
-const editContent = "Edit";
-save.innerHTML = saveContent;
-// console.info();
+const notes = JSON.parse(localStorage.getItem('notes'))
 
-save.addEventListener("click", () => {
-  if (save.textContent === "Edit") {
-    save.innerHTML = saveContent;
-    textarea.removeAttribute("readonly");
-    textarea.classList.remove("desibled");
-    editToLocalStorage(textarea.value);
-  } else {
-    save.innerHTML = editContent;
-    textarea.classList.add("desibled");
-    // console.info(textarea.value);
-    addToLocalStorage(textarea.value);
-    textarea.setAttribute("readonly", "");
+if (notes) notes.forEach((note) => addNewNote(note))
+
+addNote.addEventListener('click', () => addNewNote())
+
+function addNewNote(text = '') {
+  const note = document.createElement('div')
+  note.classList.add('notes')
+  note.innerHTML = `
+    <div class="tools">
+      <button id="save" class="save">${text ? 'Edit' : 'Save'}</button>
+      <button id="delete"><i class="fas fa-trash"></i></button>
+    </div>
+    <textarea placeholder="Write here your note...." ></textarea>
+  `
+
+  const btnSave = note.querySelector('.notes #save')
+  const btnDelete = note.querySelector('.notes #delete')
+  const textarea = note.querySelector('textarea')
+
+  textarea.value = text
+  textarea.innerHTML = text
+  if (textarea.value !== '') {
+    textarea.setAttribute('readonly', '')
+    textarea.classList.add('disabled')
   }
-});
 
-function addToLocalStorage(note) {
-  const notes = getToLocalStorage();
-  localStorage.setItem("notes", JSON.stringify([...notes, note]));
+  if (textarea.value.length === 0) addNote.disabled = true
+
+  textarea.addEventListener('input', (e) => {
+    const { value } = e.target
+    textarea.innerHTML = value
+    addToLocalStorage()
+  })
+
+  btnSave.addEventListener('click', noteText(btnSave, textarea))
+  btnDelete.addEventListener('click', () => {
+    note.remove()
+    addToLocalStorage()
+  })
+
+  notesContainer.appendChild(note)
 }
 
-function removeFromLocalStorage(textNote) {
-  const notes = getToLocalStorage();
-  localStorage.setItem(
-    "notes",
-    JSON.stringify(notes.filter((text) => text !== textNote))
-  );
+function noteText(save, textarea) {
+  save.addEventListener('click', () => {
+    if (textarea.value === '' || textarea.value === ' ') return
+    if (save.textContent === 'Edit') {
+      save.innerHTML = 'Save'
+      textarea.classList.remove('disabled')
+      textarea.removeAttribute('readonly')
+      addNote.disabled = true
+    } else {
+      addNote.disabled = false
+      save.innerHTML = 'Edit'
+      textarea.classList.add('disabled')
+      textarea.setAttribute('readonly', '')
+    }
+  })
 }
 
-function editToLocalStorage(textNote) {
-  const notes = getToLocalStorage();
-  localStorage.setItem(
-    "notes",
-    JSON.stringify(notes.filter((text) => text !== textNote))
-  );
+function addToLocalStorage() {
+  const notesText = document.querySelectorAll('textarea')
+  const notes = []
+  notesText.forEach((note) => notes.push(note.value))
+  localStorage.setItem('notes', JSON.stringify(notes))
 }
-
-function getToLocalStorage() {
-  const notes = JSON.parse(localStorage.getItem("notes"));
-  return notes === null ? [] : notes;
-}
-
-deleteNote.addEventListener("click", () => {
-  removeFromLocalStorage(textarea.value);
-  notesContaioner.classList.add("disabled");
-});
