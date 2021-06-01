@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;800&display=swap');
+
+*,
+*::before,
+*::after{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Poppins', sans-serif;
+}
+
+.app-container{
+  height: 600px;
+  width: 400px;
+  border: 3px solid #addeff;
+  position: relative;
+}
+
+.app-container .header{
+  background-color: #addeff;
+  text-align: center;
+  font-family: inherit;
+  height: 100px;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+}
+
+.app-container .header h1{
+  padding-top: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600; 
+}
+
+.app-container .header h4{
+  font-size: 1.2rem;
+  font-weight: 400; 
+}
+
+.app-container .body{
+  padding: 0 .5rem;
+  margin-top: 1rem;
+  height: 470px;
+  /* overflow: hidden; */
+  /* overflow-y: scroll; */
+}
+
+.app-container .body .task-container{
+  padding: .5rem 1rem;
+  border-radius: 10px;
+  border: 2px solid #addeff;
+  margin-bottom: .5rem;
+}
+
+.app-container .body li {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-container .body li i {
+  color: #09f;
+  font-family: 800;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.add-container{
+  display: flex;
+  justify-content: flex-end;
+  width: 400px;
+}
+
+.add {
+  background-color: #addeff;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-right: 1rem;
+  margin-top: 1rem;
+}
+
+.add:hover {
+  transform: scale(1.1);
+}
+
+.add i {
+  font-size: 1.25rem;
+  color: #fff;
+}
+
