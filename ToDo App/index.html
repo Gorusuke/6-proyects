@@ -9,38 +9,37 @@
   <script src="https://kit.fontawesome.com/23192939c8.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <div class="app-container">
+  <div id="app-container" class="app-container">
     <div class="header">
       <h1>ToDo App</h1>
       <h4>5 tasks</h4>
     </div>
     <div class="body"> 
-      <div class="task-container">
-        <li>Pasear al rinoceronte <i class="far fa-circle"></i></li>
-      </div>     
-      <div class="task-container">
-        <li>Salir con la familia <i class="far fa-circle"></i></li>
-      </div>
-      <div class="task-container">
-        <li>Hacer tareas <i class="far fa-circle"></i></li>
-      </div>
-      <div class="task-container">
-        <li>Ir de perreo <i class="far fa-circle"></i></li>
-      </div>
-      <div class="task-container">
-        <li>Pasear al perro <i class="far fa-circle"></i></li>
-      </div>
-
-      
+      <!-- <div id="task-container" class="task-container">
+        <li id="link">Pasear al rinoceronte</li>
+        <div id="buttons-container">
+          <i id="button" class="far fa-circle"></i>
+        </div>
+      </div> -->
     </div>
-    <!-- <i class="far fa-check-circle"></i> -->
-    
   </div>
   <div class="add-container">
     <div id="add" class="add">
       <i class="fas fa-plus"></i>
     </div>
   </div>
+
+  <div id="modal-container" class="modal-container">
+    <div class="modal">
+      <h2>Welcome to ToDo App</h2>
+      <div class="form-container">
+        <input id="text" type="text" placeholder="Write your To-Do name here...">
+        <button id="addToDoButton">Add</button>
+      </div>
+      <p id='close' class="close">&times;</p>
+    </div>
+  </div>
+  
   <script src="./script.js"></script>
 </body>
 </html>
