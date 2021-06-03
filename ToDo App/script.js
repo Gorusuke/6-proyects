@@ -1,29 +1,38 @@
-const addToDo = document.getElementById('add')
+const createToDo = document.getElementById('add')
 const close = document.getElementById('close')
 const modalContainer = document.getElementById('modal-container')
 const appContainer = document.getElementById('app-container')
 const inputText = document.getElementById('text')
 const addToDoButton = document.getElementById('addToDoButton')
 const toDoContainer = document.querySelector('.body')
+const initialText = document.querySelector('.body p')
+const numbersOfTaks = document.querySelector('.header h4')
+// console.info(numbersOfTaks)
+
+const notes = localStorage.getItem('todos')
+// console.info(notes)
+
+// if (notes) {
+//   notes.forEach((note) => console.info(note))
+// }
 
 close.addEventListener('click', () => {
   modalContainer.style.display = 'none'
   appContainer.style.display = 'block'
 })
 
-addToDo.addEventListener('click', () => {
+createToDo.addEventListener('click', () => {
   modalContainer.style.display = 'flex'
+  appContainer.style.display = 'none'
   inputText.value = ''
 })
 
 addToDoButton.addEventListener('click', () => {
+  if (inputText.value.length === 0) return
+  appContainer.style.display = 'block'
+  initialText.remove()
+  addToDoList(inputText.value)
   modalContainer.style.display = 'none'
-})
-
-inputText.addEventListener('change', (e) => {
-  const { value } = e.target
-  if (value.length === 0) return
-  addToDoList(value)
 })
 
 function addToDoList(inputValue) {
@@ -31,51 +40,66 @@ function addToDoList(inputValue) {
   toDo.classList.add('task-container')
   toDo.innerHTML = `
     <li id="link">${inputValue}</li>
-    <div id="buttons-container">
+    <div class="buttons-container">
       <i id="button" class="far fa-circle"></i>
     </div>
   `
   const link = toDo.querySelector('div #link')
-  const buttonsContainer = toDo.querySelector('#buttons-container')
+  const buttonsContainer = toDo.querySelector('.buttons-container')
   const buttonCheck = toDo.querySelector('div #button')
   // console.info(buttonsContainer)
 
   buttonCheck.addEventListener('click', () =>
-    changeButtonsStatus(link, buttonCheck, buttonsContainer)
+    changeButtonsStatus(link, buttonCheck, buttonsContainer, toDo)
   )
 
+  // console.info(notes.length)
+  // if (todos) numbersOfTaks.innerHTML = `${notes.length} tasks`
+
+  // console.info(toDo)
+  // addToLocalStorage(toDo)
+  addToLocalStorage()
   toDoContainer.appendChild(toDo)
 }
 
-function changeButtonsStatus(link, button, buttonsContainer) {
+function changeButtonsStatus(link, button, buttonsContainer, toDoContainer) {
   if (button.getAttribute('class') === 'far fa-check-circle check') {
     button.setAttribute('class', 'far fa-circle')
     button.classList.remove('check')
     link.classList.remove('check')
-    closeButton(buttonsContainer, button, false)
+    closeButton(buttonsContainer, button, toDoContainer, false)
   } else {
     button.setAttribute('class', 'far fa-check-circle')
     button.classList.add('check')
     link.classList.add('check')
-    closeButton(buttonsContainer, button, true)
+    // addToLocalStorage()
+    closeButton(buttonsContainer, button, toDoContainer, true)
   }
 }
 
-function closeButton(buttonsContainer, button, boolean = false) {
-  // buttonsContainer.innerHTML = ''
+function closeButton(buttonsContainer, button, toDoContainer, boolean = false) {
+  const i = document.createElement('i')
+  i.classList.add('far')
+  i.classList.add('fa-times-circle')
+  i.classList.add('close-button')
+  i.addEventListener('click', () => toDoContainer.remove())
   if (boolean) {
-    const i = document.createElement('i')
-    i.classList.add('far')
-    i.classList.add('fa-times-circle')
-    i.classList.add('close-button')
     buttonsContainer.appendChild(i)
-    // console.info(button)
   } else {
-    // buttonsContainer.innerHTML = 'hola'
-    // console.info(button)
+    buttonsContainer.innerHTML = ''
+    buttonsContainer.appendChild(button)
   }
+}
 
-  if (button.getAttribute('class') !== 'far fa-check-circle check') {
-    button.setAttribute('class', 'far fa-circle')
-  }
+function addToLocalStorage() {
+  const taskToDo = document.querySelectorAll('li')
+  console.info(taskToDo)
+  // const todos = []
+  // taskToDo.forEach((task) => todos.push(task.innerText))
+  // console.info(todos)
+  // localStorage.setItem('todos', JSON.stringify(todos))
+  // const toDoTasks = document.querySelectorAll('li')
+  // const toDo = []
+  // toDoTasks.forEach((task) => toDo.push(task))
+  // localStorage.setItem('tasks', JSON.stringify(toDo))
 }

@@ -55,6 +55,11 @@ body {
   /* overflow-y: scroll; */
 }
 
+.app-container .body p {
+  text-align: center;
+  margin-top: 3rem;
+}
+
 .app-container .body .task-container{
   padding: .5rem 1rem;
   border-radius: 10px;
@@ -73,11 +78,15 @@ body {
   text-decoration: line-through;
 }
 
+.buttons-container{
+  display: flex;
+  margin-top: 2px;
+}
+
 .app-container .body i {
   color: #09f;
   font-size: 1.25rem;
   cursor: pointer;
-  text-decoration: none;
 }
 
 .app-container .body i.check{
@@ -86,6 +95,7 @@ body {
 
 .app-container .body i.close-button{
   color: red;
+  margin-left: .25rem;
 }
 
 .add-container{
