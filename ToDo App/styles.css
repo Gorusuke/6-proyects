@@ -50,9 +50,8 @@ body {
 .app-container .body{
   padding: 0 .5rem;
   margin-top: 1rem;
-  /* height: 470px; */
-  /* overflow: hidden; */
-  /* overflow-y: scroll; */
+  max-height: 478px;
+  overflow-y: auto;
 }
 
 .app-container .body p {
