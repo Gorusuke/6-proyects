@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;800&display=swap');
+
+*,
+*::before,
+*::after{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  background-color: indigo;
+}
+
+.password-container{
+  background-color: #5f4cce;
+  padding: 1.5rem ;
+  border-radius: .5rem;
+  width: 350px;
+}
+
+.password-container h2{
+  text-align: center;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.password-header{
+  width: 100%;
+}
+
+.password-header .password{
+  height: 40px;
+  background-color: #fff;
+  padding: .5rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  position: relative;
+}
+
+.password-header .password button{
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  font-size: 1.25rem;
+  border: none;
+  background-color: indigo;
+  color: #fff;
+  padding: .3rem .5rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.password-body{
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.password-body .form-control{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: .25rem;
+}
+
+.password-container > button{
+  background-color: indigo;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 5px;
+  padding: .5rem;
+  width: 100%;
+}
