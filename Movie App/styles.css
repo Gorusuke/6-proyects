@@ -19,34 +19,29 @@ header{
   margin: 0 auto;
   background-color: #0e1c49;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  justify-items: center;
+}
+
+header a{
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+header form{
+  align-self: center;
 }
 
 header input{
   padding: .5rem 1rem;
-  border: 1px solid #000;
-  border-right: none;
+  border: none;
   border-radius: 1rem;
-  background-color: #eee;
   width: 300px;
-  align-items: flex-end;
   outline: none;
   font-weight: 600;
   font-family: inherit;
 }
-
-/* header button{
-  background-color: transparent;
-  color: #09f;
-  font-size: 1.2rem;
-  border: 1px solid #110606;
-  padding: 4px 12px 3px 12px;
-  border-left: none;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-  cursor: pointer;
-  font-family: inherit;
-} */
 
 .container{
   margin: .5rem;
@@ -63,10 +58,12 @@ header input{
   /* width: 300px; */
   background-color: #122b7ee6;
   overflow: hidden;
+  position: relative;
 }
 
 img {
   max-width: 100%;
+  cursor: pointer;
 }
 
 .movie-info{
@@ -78,8 +75,9 @@ img {
   margin-top: -0.5rem;
 }
 
-.movie-info h3{
-  font-weight: 400;
+.movie-info h3,
+.overview h3{
+  font-weight: 600;
 }
 
 .movie-info span{
@@ -98,4 +96,48 @@ img {
 
 .movie-info span.red{
   background-color: rgb(197, 0, 0);
+}
+
+.overview{
+  padding: 1rem 1.25rem;
+  background-color: white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  max-height: 100%;
+  transform: translateY(101%);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  transition: all .3s ease-out;
+}
+
+.overview .release-date{
+  margin-top: .5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.overview h3 span, .overview .release-date span{
+  font-weight: 400;
+  font-size: .9rem;
+}
+
+.overview .release-date h4 {
+  font-weight: 600;
+}
+
+.movie:hover .overview{
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  header{
+    flex-direction: column;
+  }
+
+  header h1{
+    text-align: center;
+    margin-bottom: .5rem;
+  }
 }
