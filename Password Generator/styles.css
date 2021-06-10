@@ -22,6 +22,7 @@ body {
   padding: 1.5rem ;
   border-radius: .5rem;
   width: 350px;
+  position: relative;
 }
 
 .password-container h2{
@@ -33,6 +34,7 @@ body {
 
 .password-header{
   width: 100%;
+  position: relative;
 }
 
 .password-header .password{
@@ -44,7 +46,7 @@ body {
   position: relative;
 }
 
-.password-header .password button{
+.password-header button{
   position: absolute;
   top: 3px;
   right: 5px;
@@ -80,4 +82,15 @@ body {
   border-radius: 5px;
   padding: .5rem;
   width: 100%;
+}
+
+.message-container{
+  position: absolute;
+  top: -3rem;
+}
+
+.message{
+  color: #ff0000;
+  text-align: center;
+  font-weight: 400;
 }

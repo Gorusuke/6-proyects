@@ -10,16 +10,16 @@
 </head>
 <body>
   <div class="password-container">
+    <div class="message-container"></div>
     <h2>Password Generator</h2>
     <div class="password-header">
-      <div class="password">
-        <button><i class="far fa-clipboard"></i></button>
-      </div>
+      <div class="password" id="password"></div>
+      <button id="copy"><i class="far fa-clipboard"></i></button>
     </div>
     <div class="password-body">
       <div class="form-control">
         <label for="length">Password Length</label>
-        <input id="length" type="number" min="4" max="20">
+        <input id="length" type="number" min="10" max="25" value="15">
       </div>
       <div class="form-control">
         <label for="upper">Include uppercase letters</label>
@@ -30,15 +30,15 @@
         <input id="lower" type="checkbox">
       </div>
       <div class="form-control">
-        <label for="numbers">Include numbers letters</label>
-        <input id="numbers" type="checkbox">
+        <label for="number">Include numbers</label>
+        <input id="number" type="checkbox">
       </div>
       <div class="form-control">
-        <label for="symbols">Include symbols letters</label>
-        <input id="symbols" type="checkbox">
+        <label for="symbol">Include symbols</label>
+        <input id="symbol" type="checkbox">
       </div>
     </div>
-    <button class="generate">Generate Password</button>
+    <button class="generate" id="generate">Generate Password</button>
   </div>
   <script src="./script.js"></script>
 </body>
